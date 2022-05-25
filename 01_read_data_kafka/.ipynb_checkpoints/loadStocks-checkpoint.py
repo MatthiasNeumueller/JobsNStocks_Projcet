@@ -30,7 +30,7 @@ data = data.reset_index()
 data = data.melt(id_vars = ["Date"], value_vars =  list(data.columns), var_name='Stock', value_name = 'Close_value')
 
 
-engine = create_engine('postgresql://ds21m031:surf1234@dsc-inf.postgres.database.azure.com:5432/nyt_import')
+engine = create_engine('<DB-Hostname>')
 sql = 'DROP TABLE IF EXISTS ds21_b1_jobs_stock;'
 engine.execute(sql)
 data.to_sql('ds21_b1_jobs_stock', engine)

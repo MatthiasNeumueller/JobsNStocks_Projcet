@@ -65,7 +65,7 @@ def add_user_location():
 
 @st.cache #(allow_output_mutation=True)
 def load_data_word_count():
-    engine = db.create_engine('postgresql+psycopg2://ds21m031:surf1234@dsc-inf.postgres.database.azure.com/nyt_import')
+    engine = db.create_engine('<DB-Hostname>')
  #   connection = engine.connect()
     metadata = db.MetaData(bind=engine)
     db.MetaData.reflect(metadata)
@@ -80,7 +80,7 @@ def load_data_word_count():
 
 @st.cache #(allow_output_mutation=True)
 def load_data_coeficient():
-    engine = db.create_engine('postgresql+psycopg2://ds21m031:surf1234@dsc-inf.postgres.database.azure.com/nyt_import')
+    engine = db.create_engine('<DB-Hostname>')
     metadata = db.MetaData(bind=engine)
     db.MetaData.reflect(metadata)
     RESULT = metadata.tables['ds21_b1_jobs_result']
@@ -92,14 +92,14 @@ def load_data_coeficient():
 
 @st.cache
 def load_data_location():
-    engine = db.create_engine('postgresql+psycopg2://ds21m031:surf1234@dsc-inf.postgres.database.azure.com/nyt_import')
+    engine = db.create_engine('<DB-Hostname>')
     connection = engine.connect()
 
     sql_query = text("""SELECT longitude, latitude, lm_coefficint from ds21_b1_jobs_result;""")
     return connection.execute(sql_query).fetchall()
 
 def do_wordCloud(df_coefficint, df_wordcount):
-    # engine = db.create_engine('postgresql+psycopg2://ds21m031:surf1234@dsc-inf.postgres.database.azure.com/nyt_import')
+    # engine = db.create_engine('<DB-Hostname>')
     # metadata = db.MetaData(bind=engine)
     # db.MetaData.reflect(metadata)
     # WORDCOUNT = metadata.tables['ds21_b1_jobs_wordcount']
@@ -221,7 +221,7 @@ def filtered_map(df_location):
         'Select development:',
         ('all', 'increase', 'decrease'))
 
-    # engine = db.create_engine('postgresql+psycopg2://ds21m031:surf1234@dsc-inf.postgres.database.azure.com/nyt_import')
+    # engine = db.create_engine('<DB-Hostname>')
     # connection = engine.connect()
 
     # sql_query = text("""SELECT longitude, latitude, lm_coefficint from ds21_b1_jobs_result;""")
@@ -268,7 +268,7 @@ def filtered_map(df_location):
 
 @st.cache(allow_output_mutation=True)
 def load_data_jobs():
-    engine = db.create_engine('postgresql+psycopg2://ds21m031:surf1234@dsc-inf.postgres.database.azure.com/nyt_import')
+    engine = db.create_engine('<DB-Hostname>')
     connection = engine.connect()
     sql_query = text("""SELECT title, city, country, longitude, latitude, lm_coefficint, company_name_ad from ds21_b1_jobs_result;""")
     result_location = connection.execute(sql_query).fetchall()

@@ -9,11 +9,11 @@ from serpapi import GoogleSearch
 
 
 
-secrets_db = {"host": "dsc-inf.postgres.database.azure.com",
-            "port": 5432,
+secrets_db = {"host": "<DB-Hostname>",
+            "port": "<PORT>",
             "database": "nyt_import",
-            "user": "ds21m031",
-            "pass": "surf1234"}
+            "user": "<USER>",
+            "pass": "<PW>"}
 
 
 params_google = {
@@ -21,7 +21,7 @@ params_google = {
   "q": "data scientist",
   "location": "Austria",
   "hl": "en",
-  "api_key": "2d218d3f37b4f85a7bc956878ec5bf254d97049dfb1c16d28cf990b6d963ae05"
+  "api_key": "<API-Key>"
 }
 
 
